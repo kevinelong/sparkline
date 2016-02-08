@@ -1,2 +1,4 @@
 .idea/*
+/sparkline.iml
+/.idea
 *.iml

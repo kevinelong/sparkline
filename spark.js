@@ -3,11 +3,11 @@
   this.Spark = (function() {
     var CLOSE, OPEN, PREFIX, SUFFIX;
 
-    OPEN = "<svg width=\"100\" height=\"50\" viewPort=\"0 0 100 50\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">";
+    OPEN = "<svg width=\"100\" height=\"100\" viewPort=\"0 0 100 100\" viewport-fill=\"black\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">";
 
     PREFIX = "<polyline  points=\"";
 
-    SUFFIX = "\" style=\"stroke:#006600;\" fill=\"none\" />";
+    SUFFIX = "\" style=\"stroke:#00ff00;\" fill=\"none\" />";
 
     CLOSE = "</svg>";
 
@@ -16,12 +16,19 @@
     }
 
     Spark.prototype.spark = function(data, valueName) {
-      var final, i, index, item, len, list, output, x;
+      var endIndex, final, i, index, item, len, list, output, ref, ref1, startIndex, x;
       list = [];
       console.log("creating a spark from data");
-      for (index = i = 0, len = data.length; i < len; index = ++i) {
-        item = data[index];
-        x = index * 10;
+      startIndex = (ref = data.length < 100) != null ? ref : {
+        0: data.length - 100
+      };
+      endIndex = data.length;
+      ref1 = data.slice(startIndex, +endIndex + 1 || 9e9);
+      for (index = i = 0, len = ref1.length; i < len; index = ++i) {
+        item = ref1[index];
+        console.log(index);
+        console.log(item);
+        x = index * 1;
         list.push(x + "," + item[valueName]);
       }
       output = list.join(" ");
