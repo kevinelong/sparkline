@@ -18,7 +18,7 @@
   getData = function() {
     var method, request, url;
     method = "GET";
-    url = "data.php";
+    url = "data.json";
     request = new XMLHttpRequest();
     request.addEventListener("load", onData);
     request.open(method, url);
